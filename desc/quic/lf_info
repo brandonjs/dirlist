@@ -1,0 +1,14 @@
+<?php
+
+$title = "QuIC Boot2Gecko Patches";
+
+$desc = "The patches listed below are test, debug, or potential patches to fix issues on ongoing projects based on Firefox OS source code on Code Aurora Forum and upstream. Any fixes initially delivered via a patch in this directory, if applicable, will be made available in the Firefox OS source code available via repo/git from Code Aurora Forum or upstream.";
+
+echo "<h2 class=\"caf\">$title</h2>\n";
+echo "<hr size=3 noshade>\n";
+echo "</head>\n";
+echo "<body>\n";
+echo "<div id='container'>\n";
+echo "<h3>$desc</h3>\n";
+
+?>
