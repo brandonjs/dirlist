@@ -21,7 +21,8 @@ if(preg_match("/redmine/", $patchDir)) {
 
 # Strip information to get path to description.
 $basePath = preg_replace('/\/patches\//', "", $_SERVER['REQUEST_URI']);
-$basePath = preg_replace('/(\w+)\/([A-Za-z0-9-])\/.*/', '/$1/$2/', $basePath);
+$basePath = preg_replace('/\?path=\/.*release/', "", $basePath);
+$basePath = preg_replace('/(\w+)\/([A-Za-z0-9-]+)?\/.*/', '/$1/$2/', $basePath);
 $basePath = preg_replace('/\?.*$/', "", $basePath);
 $basePath = preg_replace('/\/$/', "", $basePath);
 $basePath = preg_replace('/^\//', "", $basePath);
@@ -92,6 +93,8 @@ print ("
 foreach($dirlist as $file) {
    if(preg_match("/index\./", $file['name'])) continue;
    if(preg_match("/redmine/", $file['path'])) continue;
+   if(preg_match("/.git/", $file['path'])) continue;
+   if(preg_match("/downloads/", $file['path'])) continue;
    if(is_dir($file['path'])) {
       $class="dir";
    } else {
