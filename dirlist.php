@@ -19,8 +19,10 @@ if(preg_match("/redmine/", $patchDir)) {
    exit();
 }
 
-$basePath = preg_replace('/\/patches-new\//', "", $_SERVER['REQUEST_URI']);
-$basePath = preg_replace('/(\w+)\/(\w+)?\/.*/', '/$1/$2/', $basePath);
+# Strip information to get path to description.
+$basePath = preg_replace('/\/patches\//', "", $_SERVER['REQUEST_URI']);
+$basePath = preg_replace('/(\w+)\/([A-Za-z0-9-])\/.*/', '/$1/$2/', $basePath);
+$basePath = preg_replace('/\?.*$/', "", $basePath);
 $basePath = preg_replace('/\/$/', "", $basePath);
 $basePath = preg_replace('/^\//', "", $basePath);
 

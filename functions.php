@@ -17,8 +17,8 @@ function getFileList($dir, $recurse=false) {
    $d = @dir($dir) or die("getFileList: Failed opening directory $dir for reading");
    while(false !== ($entry = $d->read())) {
       // skip hidden files
-#      if($entry[0] == ".") continue;
-      if(preg_match("/include|index\.|\.htaccess|\.info|^\.\.?$/", $entry)) continue;
+      if($entry[0] == ".") continue;
+      if(preg_match("/include|index\.|\.htaccess|\.info|^\.\.?$|downloads/", $entry)) continue;
       if(is_dir("$dir$entry")) {
          $retval[] = array(
             "name" => basename(trim("$dir$entry/", "./ ")),
